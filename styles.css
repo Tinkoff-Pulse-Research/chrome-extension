@@ -1,0 +1,57 @@
+.slang {
+    border-radius: 3px;
+    border: 2px solid #ffe10f;
+    padding: 1px;
+    cursor: help;
+}
+
+.slang.determined {
+    border-color: #ff470f;
+}
+
+.slang.ml .slang.determined {
+    border: none;
+    padding: 0;
+}
+
+.tooltip {
+    position: fixed;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    background: #f2f2f2;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, .12);
+    border: 1px solid #e2e2e2;
+    min-width: 100px;
+    min-height: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all .2s;
+    opacity: 0;
+}
+
+.processing {
+    border: 2px solid #aaf;
+    animation: border-loading 2s ease infinite;
+}
+
+@keyframes border-loading {
+    0% {
+        border-color: #aaf;
+    }
+    25% {
+        border-color: #fff;
+    }
+
+    50% {
+        border-color: #aaf;
+    }
+
+    75% {
+        border-color: #fff;
+    }
+
+    100% {
+        border-color: #aaf;
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Tinkoff Pulse Slang Searcher",
+    "version": "1.0",
+    "description": "Поиск биржевого сленга в социальной сети для инвесторов Тинькофф Пульс",
+    "content_scripts": [
+        {
+            "matches": [ "https://www.tinkoff.ru/invest/*" ],
+            "css": ["styles.css"],
+            "js": [ "app.js" ]
+        }
+    ]
+ }
