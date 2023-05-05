@@ -5,9 +5,20 @@
     "description": "Поиск биржевого сленга в социальной сети для инвесторов Тинькофф Пульс",
     "content_scripts": [
         {
-            "matches": [ "https://www.tinkoff.ru/invest/*" ],
-            "css": ["styles.css"],
-            "js": [ "app.js" ]
+            "matches": [
+                "https://www.tinkoff.ru/invest/*"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "js": [
+                "app.js"
+            ]
         }
-    ]
- }
+    ],
+    "icons": {
+        "16": "pfp.png",
+        "48": "pfp.png",
+        "128": "pfp.png"
+    }
+}
