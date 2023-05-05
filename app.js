@@ -54,18 +54,41 @@ function detect_slang(text, callback) {
 
 const process = () => {
     var cont = document.querySelector("div[data-qa-tag='PulseCommentsContainer']");
-    cont.querySelectorAll("div").forEach((div) => {
-        if (div.classList.contains("processed_ml")) return;
-        var classes = div.classList;
-        for (var i = 0; i < classes.length; i++) {
-            var className = classes[i];
-            if (className.startsWith("PulseComment__commentText")) {
-                div.parentNode.classList.add("processing");
-                div.classList.add("processed_ml");
-                detect_slang(div.innerText, (answer) => { div.innerHTML = answer; div.parentNode.classList.remove("processing"); });
+    if (cont) {
+        cont.querySelectorAll("div").forEach((div) => {
+            if (div.classList.contains("processed_ml") || div.parentNode.classList.contains("processing")) return;
+            var classes = div.classList;
+            for (var i = 0; i < classes.length; i++) {
+                var className = classes[i];
+
+                if (className.startsWith("PulseComment__commentText")) {
+                    div.parentNode.classList.add("processing");
+                    div.classList.add("processed_ml");
+                    detect_slang(div.innerText, (answer) => { div.innerHTML = answer; div.parentNode.classList.remove("processing"); });
+                }
             }
-        }
-    });
+        });
+    }
+
+    var conts = document.querySelectorAll("div[data-qa-tag='PulsePost']");
+    if (conts) {
+        conts.forEach((cont) => {
+            cont.querySelectorAll("div[data-qa-file='TextLineCollapse']").forEach((div) => {
+                if (div.classList.contains("processed_ml") || div.parentNode.parentNode.parentNode.parentNode.classList.contains("processing")) return;
+                var classes = div.classList;
+                for (var i = 0; i < classes.length; i++) {
+                    var className = classes[i];
+
+                    if (className.startsWith("pulse-posts-by-ticker")) {
+                        div.parentNode.parentNode.parentNode.parentNode.classList.add("processing");
+                        div.classList.add("processed_ml");
+                        detect_slang(div.innerText, (answer) => { div.innerHTML = answer; console.log(div.parentNode.parentNode.parentNode.parentNode); div.parentNode.parentNode.parentNode.parentNode.classList.remove("processing"); });
+                    }
+                }
+            });
+        })
+    }
+
     setTimeout(process, 1000);
 }
 
