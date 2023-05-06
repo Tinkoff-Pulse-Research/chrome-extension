@@ -96,7 +96,7 @@ const process = () => {
                     div.innerHTML = answer;
                     div.parentNode.parentNode.classList.remove("processing");
                 });
-            }, 1000 * i);
+            }, 500 * i);
             i += 1;
         })
     }
